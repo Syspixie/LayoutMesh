@@ -55,22 +55,28 @@ As of July 2023...
 ### Screenshots
 
 User interface: entity treeviews on left and right of central information panel, and CBUS message panel.
-<br><img src="screenshots/20230705-InitUI.gif" width="850"/>
+<p><img src="Screenshots/20230705-InitUI.gif" width="1059"/>
+<br><br>
 
 User interface with event "Event 16" selected: central panel showing data available about the event.
-<br><img src="screenshots/20230705-UIExample.gif" width="850"/>
+<p><img src="Screenshots/20230705-UIExample.gif" width="1059"/>
+<br><br>
 
 Event Configure->Actions shows the Event actions dialog: note level of detail about each action.
-<br><img src="screenshots/20230705-Actions1.gif" width="732"/>
+<p><img src="Screenshots/20230705-Actions1.gif" width="732"/>
+<br><br>
 
 Add action dialog page 1: device "MIO Test channel 2" selected as a response action.
-<br><img src="screenshots/20230705-AddAction1.gif" width="605"/>
+<p><img src="Screenshots/20230705-AddAction1.gif" width="605"/>
+<br><br>
 
 Add action dialog page 2: specific action (flash output) selected.
-<br><img src="screenshots/20230705-AddAction2.gif" width="605"/>
+<p><img src="Screenshots/20230705-AddAction2.gif" width="605"/>
+<br><br>
 
 Event actions dialog: showing the newly added action.
-<br><img src="screenshots/20230705-Actions2.gif" width="732"/>
+<p><img src="Screenshots/20230705-Actions2.gif" width="732"/>
+<br><br>
 
 ## Notes
 
