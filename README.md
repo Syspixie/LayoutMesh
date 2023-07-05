@@ -62,11 +62,11 @@ User interface with event "Event 16" selected: central panel showing data availa
 <p><img src="Screenshots/20230705-UIExample.gif" width="1059"/>
 <br><br>
 
-Event Configure->Actions shows the Event actions dialog: note level of detail about each action.
+Event 'Configure->Actions' shows the Event actions dialog: note level of detail about each action.
 <p><img src="Screenshots/20230705-Actions1.gif" width="732"/>
 <br><br>
 
-Add action dialog page 1: device "MIO Test channel 2" selected as a response action.
+Actions 'Edit->Add Response' Add action dialog page 1: device "MIO Test channel 2" selected as a response action.
 <p><img src="Screenshots/20230705-AddAction1.gif" width="605"/>
 <br><br>
 
@@ -76,6 +76,10 @@ Add action dialog page 2: specific action (flash output) selected.
 
 Event actions dialog: showing the newly added action.
 <p><img src="Screenshots/20230705-Actions2.gif" width="732"/>
+<br><br>
+
+Sync dialog: highlights differences between the application's data (MeshData), and the hardware.  Done by reading a node's parameters, node variables, events, and event variables.  Examples shown in the screenshot are: node 99, which responded on CBUS, but has no MeshData node; nodes 101 and 102 which exist in MeshData, but did not respond on CBUS; nodes 256 and 257 which exist in MeshData and responded. For these last two, a number of checks are performed: the hardware and MeshData module types match (if not, they are two different modules, and shouldn't have the same node number); the parameters match (if not, there is probably a firmware difference), everything else matches (if not, the configurations are out of step). Clicking on the response gives the user options available to 'fix' any mismatch. In the screenshot case, node 256 differs from its hardware in configuration data, and node 257 actually references a different module.
+<p><img src="Screenshots/20230705-Sync.gif" width="850"/>
 <br><br>
 
 ## Notes
