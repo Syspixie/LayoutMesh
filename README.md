@@ -4,23 +4,22 @@ A CBUS module configuration utility for model railway layouts.
 ## Design
 
 ### Vision
-**To create a CBUS module configuration utility that can be used with the minimum of background knowledge by
-layout builders, whilst also being a powerful tool for module development.**
+**To create a consistent and coherent CBUS layout configuration utility that can be used with the minimum of background knowledge by layout builders, whilst also being a powerful tool for module development.**
 
-LayoutMesh will be an application which represents a layout as a series of devices (e.g. a switch, a point motor, a signal) and a series of events (e.g. 'Select route A', 'Loco detected in block').  The user creates an event, giving it a name and adding free-text notes if required.  The event is then configured to communicate between devices by configuring trigger and response actions; for example: a switch is assigned to trigger the event, and two point motors are assigned to respond to the event.
+LayoutMesh is an application which represents a layout as a series of devices (e.g. a switch, a point motor, a signal) and a series of events (e.g. 'Select route A', 'Loco detected in block').  The user creates an event, giving it a name and adding free-text notes if required.  The event is then configured to communicate between devices by configuring trigger and response actions; for example: a switch is assigned to trigger the event, and two point motors are assigned to respond to the event.
 
-For module developers, LayoutMesh will provide CBUS message display and logging, manual triggering of events, and firmware uploading. Data files, which contain all device, node, module, processor, and event information, will be human-readable. Data loading will be edit-tolerant, with the ability to handle missing and duplicated data in a predictable manner.
+For module developers, LayoutMesh provides CBUS message display and logging, manual triggering of events, and firmware uploading. Data files, which contain all device, node, module, processor, and event information, will be human-readable. Data loading will be edit-tolerant, with the ability to handle missing and duplicated data in a predictable manner.
 
 ### Design Specifics
-* No module-specific code in the main application.
-* Simple installation: either using a package .msi or .exe file, or a .zip file.
 * Modules represented by nodes (specific instances of a module), and devices (multi-channel nodes have a device per channel).
-* All main entities (devices, nodes, modules, processors & events) may be given a meaningful name, have free-text notes added, and may be collected together in a named group.
+* All main entities (devices, nodes, modules, processors & events) may be given a meaningful name, have free-text notes added.  Each entity type has its own hierarchical tree structure, allowing entities to be grouped together however the user wishes.
 * Events may have multiple trigger actions and multiple response actions. Trigger and responder devices may be on different nodes, or the same node  (firmware permitting).
-* A 'synchronise' mechanism to handle hardware or data that has changed outside of the application.
 * Capture and display of CBUS traffic in real time, including data translation.
-* Data backups made before major changes saved to hardware or data.
-* Node configuration provided for those modules that don't have a self-configuration mechanism, using a separately installable 'plug-in' package.
+* A 'synchronise' display handles hardware or data changes by comparing the hardware and data configuration of nodes, and, if they don't match, allowing the user to choose synchronisation options such as making the hardware match the data, or vice versa.
+* Data and hardware configuration backups made before any changes are mode.
+* No module-specific code in the main application. Node configuration may be provided for those modules that don't have a self-configuration mechanism, using separately installable 'plug-in' files.
+* Simple installation from a .zip file. No hidden directories or files.
+* All code and documentation will be made available on GitHub on an open MIT license.
 
 ### Target Systems
 The application is written in C# for Windows systems, based on .NET Desktop 7.
@@ -28,7 +27,25 @@ The application is written in C# for Windows systems, based on .NET Desktop 7.
 ## Progress
 Project started January 2023.
 
-As of July 2023...
+### As of November 2023...
+
+#### Features Complete or Near Completion (subject to testing)
+* All core features now coded.
+
+#### In Progress
+* Code tidy-up, refactoring, review and commenting.
+
+#### Not Started
+* Module-specific node configuration plug-ins.
+* Testing. And more testing.
+* Documentation.
+
+#### Not Known
+* Interaction with SLiM nodes.
+* Interaction with DCC nodes.
+* There appears to be no documentation for the current FCU's functionality, so there are possibly things in there that I (and probably most people) know nothing about.
+
+### As of July 2023...
 
 #### Features Complete or Near Completion (subject to testing)
 * 'MeshData' files - XML file load and save; JavaScript parse and execute.
@@ -52,7 +69,7 @@ As of July 2023...
 * Interaction with DCC nodes.
 * There appears to be no documentation for the current FCU's functionality, so there are possibly things in there that I (and probably most people) know nothing about.
 
-### Screenshots
+### Screenshots (July 2023)
 
 User interface: entity treeviews on left and right of central information panel, and CBUS message panel.
 <p><img src="Screenshots/20230705-InitUI.gif" width="1059"/>
@@ -82,8 +99,8 @@ Sync dialog: highlights differences between the application's data (MeshData), a
 <p><img src="Screenshots/20230705-Sync.gif" width="850"/>
 <br><br>
 
-## Notes
+### Notes
 
-Looked at JSON as a format for MeshData files; found it difficult to manually read and edit.  Reverted to trusty old XML - tags let you know what you are looking at. By careful association of data model classes with the underlying XML, the application preserves most user formatting, comments etc. when saving the XML file.
+Looked at JSON as a format for MeshData files; found it difficult to manually read and edit.  Reverted to trusty old XML - tags let you know what you are looking at. By careful association of data model classes with the underlying XML, the application preserves user formatting, comments etc. when saving the XML file.
 
 Pleased with the performance of CBUS message capture, display, and logging. Appears to be limited by the speed of the CAN bus, not the application itself. Certainly a lot faster than the current FCU - for example: FCU takes 4.7 seconds to read 127 node variables from a CANMIO node; LayoutMesh reads the same node variables, and the events, and the event variables, and runs JavaScript to translate the event variables into actions ... all in 0.75 seconds.
