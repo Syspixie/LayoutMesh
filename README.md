@@ -1,14 +1,14 @@
 # LayoutMesh
 A CBUS module configuration utility for model railway layouts.
-
-## Update
-Alpha version will be released shortly.
 <p><img src="Screenshots/20240110-InitUI.gif" width="1174"/>
 <br>
 
-Please note that this is an alpha (preview) release - the application has not undergone extensive testing in real-life environments; it has limited functionality in some areas; any feature may be modified or removed.
+## Update
+The initial version of LayoutMesh has been released: **LayoutMesh 1.0.0-alpha.1**.
 
-CANMIO and CANPAN modules are supported in terms of the data describing events and event actions, and also for module-specific node configuration screens.  Other module types are currently supported with a generic node and event variable editor.  Addition of module specific support should not require changes to the main application.
+Please note that this is a pre-release alpha (preview) version: the application has not yet undergone extensive testing in real-life environments; it may have limited functionality in some areas; features may be modified or removed before the final release.
+
+CANMIO and CANPAN CBUS modules are supported in terms of the data describing events and event actions, and also for module-specific node configuration screens.  Other module types are currently supported with a generic node variable and event variable editor.  Addition of module specific support should not require changes to the main application.
 
 ## Design
 
@@ -31,10 +31,21 @@ For module developers, LayoutMesh provides CBUS message display and logging, man
 * All code and documentation will be made available on GitHub under an open MIT license.
 
 ### Target Systems
-The application is written in C# for Windows systems, based on .NET Desktop 8.
+The application is written in C# for Windows systems, based on .NET Desktop 8.0.
 
 ## Installation
-TBA
+The application does not have an installer.  The installation process is simply to download a zip file, and extract its contents to a suitable directory.  Shortcuts to the program may be created on the desktop, the taskbar, or anywhere else that makes sense.
+
+By default, LayoutMesh looks for user files (layout data, settings etc.) in subdirectories under 'Documents\LayoutMesh'. This would be a suitable directory for the zip file contents if you envisage only ever running one version of LayoutMesh at a time; if you want side-by-side installations of different versions, then installing each version in its own subdirectory might be more appropriate.  Changing the installation directory at a later date is simply a matter of moving the program and subdirectories, and updating any shortcuts.
+
+* Go to the release page on GitHub: https://github.com/Syspixie/LayoutMesh/releases.
+* Click on the release required, e.g. 'v1.0.0'.
+* Click on the specific zip file, e.g. 'LayoutMesh-1.0.0-win-x64.zip', to download it (to, for example, your 'Downloads' folder).
+* Navigate to the download directory, and double-click the zip file.
+* Extract the contents to your chosen directory.
+* Navigate to your chosen directory; there should be a LayoutMesh.exe file, plus 'Addins' and 'Config' subdirectories and their files.
+* Double-click the LayoutMesh.exe file to run the application.
+* LayoutMesh requires '.NET Desktop 8.0' to be installed on your computer.  If this is not found when you run the application for the first time, an error box will appear providing a link to the correct download location on Microsoft's website.  Clicking on the link will download and install .NET; this is a quick and simple operation, not requiring a reboot.
 
 ## Getting Started
 There are two ways of getting started with LayoutMesh:
@@ -43,14 +54,16 @@ There are two ways of getting started with LayoutMesh:
 
 ### Importing Data from a FlimConfig File
 This process imports nodes and events from a FlimConfig data file.  It can be done without being connected to the CBUS network, so is a safe way of exploring LayoutMesh without the danger of inadvertently making configuration changes.
+
 * Run LayoutMesh.
 * It is probably a bad idea to import data over any existing data, so select 'File' -> 'New' to clear all data and start afresh.
-* Select 'File' -> 'Import FCU Config File...'. Navigate to the FlimConfig data directory (usually %MyDocuments%\flimConfig\Configs), then double-click the required layout file (e.g. Layout1.xml).
+* Select 'File' -> 'Import FCU Config File...'. Navigate to the FlimConfig data directory (usually 'Documents\flimConfig\Configs'), then double-click the required layout file (e.g. Layout1.xml).
 * There may be a display showing new devices and events that have been added to the MeshData data.
 * Select 'File' -> 'Save As...', and save the data as a MeshData layout file.
 
 ### Reading data from CBUS Nodes
 This process reads configuration data directly from CBUS nodes.  It is a good way of "starting from scratch".  It is not possible to run LayoutMesh and FlimConfig at the same time unless you have two CBUS adapters (e.g. 2x CANUSBs) on your network.
+
 * Run LayoutMesh.
 * Click on the CBUS window.  If you can't see the CBUS window at any time, click on the 'Show CBUS Window' button on the main application window.
 * Select 'CBUS' -> 'COM Port', then select the appropriate COM port.  If the CBUS is active, a green indicator should appear in the bottom left-hand corner ot the CBUS window; adjacent amber indicators show messages being received and transmitted.
