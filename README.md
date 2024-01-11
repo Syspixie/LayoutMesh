@@ -34,7 +34,9 @@ For module developers, LayoutMesh provides CBUS message display and logging, man
 The application is written in C# for Windows systems, based on .NET Desktop 8.0.
 
 ## Installation
-The application does not have an installer.  The installation process is simply to download a zip file, and extract its contents to a suitable directory.  Shortcuts to the program may be created on the desktop, the taskbar, or anywhere else that makes sense.
+The application does not have its own installer.  The installation process is simply to download a zip file, and extract its contents to a suitable directory.  Shortcuts to the program may be created on the desktop, the taskbar, or anywhere else that makes sense.
+
+LayoutMesh requires '.NET Desktop Runtime 8.0' to be installed on your computer.  If this is not found when you run the application for the first time, a message box will appear providing a link to download .NET from Microsoft.  Clicking on the 'Download it now' link will download the .NET installer; double-clicking on the installer installs .NET - this is a very quick and simple operation, not requiring a reboot.
 
 By default, LayoutMesh looks for user files (layout data, settings etc.) in subdirectories under 'Documents\LayoutMesh'. This would be a suitable directory for the zip file contents if you envisage only ever running one version of LayoutMesh at a time; if you want side-by-side installations of different versions, then installing each version in its own subdirectory might be more appropriate.  Changing the installation directory at a later date is simply a matter of moving the program and subdirectories, and updating any shortcuts.
 
@@ -44,8 +46,7 @@ By default, LayoutMesh looks for user files (layout data, settings etc.) in subd
 * Navigate to the download directory, and double-click the zip file.
 * Extract the contents to your chosen directory.
 * Navigate to your chosen directory; there should be a LayoutMesh.exe file, plus 'Addins' and 'Config' subdirectories and their files.
-* Double-click the LayoutMesh.exe file to run the application.
-* LayoutMesh requires '.NET Desktop 8.0' to be installed on your computer.  If this is not found when you run the application for the first time, an error box will appear providing a link to the correct download location on Microsoft's website.  Clicking on the link will download and install .NET; this is a quick and simple operation, not requiring a reboot.
+* Double-click the LayoutMesh.exe file to run the application.  Install .NET if prompted (a one-off operation).
 
 ## Getting Started
 There are two ways of getting started with LayoutMesh:
