@@ -1,106 +1,64 @@
 # LayoutMesh
 A CBUS module configuration utility for model railway layouts.
 
+## Update
+Alpha version will be released shortly.
+<p><img src="Screenshots/20240110-InitUI.gif" width="1174"/>
+<br>
+
+Please note that this is an alpha (preview) release - the application has not undergone extensive testing in real-life environments; it has limited functionality in some areas; any feature may be modified or removed.
+
+CANMIO and CANPAN modules are supported in terms of the data describing events and event actions, and also for module-specific node configuration screens.  Other module types are currently supported with a generic node and event variable editor.  Addition of module specific support should not require changes to the main application.
+
 ## Design
 
-### Vision
-**To create a consistent and coherent CBUS layout configuration utility that can be used with the minimum of background knowledge by layout builders, whilst also being a powerful tool for module development.**
+### Concept
+**A consistent and coherent CBUS layout configuration utility that can be used with the minimum of background knowledge by layout builders, whilst also being a powerful tool for module development.**
 
-LayoutMesh is an application which represents a layout as a series of devices (e.g. a switch, a point motor, a signal) and a series of events (e.g. 'Select route A', 'Loco detected in block').  The user creates an event, giving it a name and adding free-text notes if required.  The event is then configured to communicate between devices by configuring trigger and response actions; for example: a switch is assigned to trigger the event, and two point motors are assigned to respond to the event.
+LayoutMesh is an application which represents a model railway layout as a series of devices (e.g. a switch, a point motor, a signal) and a series of events (e.g. 'Select route A', 'Loco detected in block').  The user creates an event, giving it a name and adding free-text notes if required.  The event is then configured to communicate between devices by defining trigger and response actions; for example: a switch is assigned to trigger the event, and two point motors are assigned to respond to the event.
 
-For module developers, LayoutMesh provides CBUS message display and logging, manual triggering of events, and firmware uploading. Data files, which contain all device, node, module, processor, and event information, will be human-readable. Data loading will be edit-tolerant, with the ability to handle missing and duplicated data in a predictable manner.
+For module developers, LayoutMesh provides CBUS message display and logging, manual triggering of events, and firmware uploading. Data files, which contain all device, node, module, processor, and event information, are human-readable. Data loading is edit-tolerant, with the ability to handle missing and duplicated data in a predictable manner.
 
 ### Design Specifics
 * Modules represented by nodes (specific instances of a module), and devices (multi-channel nodes have a device per channel).
 * All main entities (devices, nodes, modules, processors & events) may be given a meaningful name, have free-text notes added.  Each entity type has its own hierarchical tree structure, allowing entities to be grouped together however the user wishes.
 * Events may have multiple trigger actions and multiple response actions. Trigger and responder devices may be on different nodes, or the same node  (firmware permitting).
-* Capture and display of CBUS traffic in real time, including data translation.
+* Capture and display of CBUS traffic in real time, including data translation.  The CBUS display is a separate window, allowing it to be positioned and accessed independent of the main application.
 * A 'synchronise' display handles hardware or data changes by comparing the hardware and data configuration of nodes, and, if they don't match, allowing the user to choose synchronisation options such as making the hardware match the data, or vice versa.
-* Data and hardware configuration backups made before any changes are mode.
+* Data and hardware configuration information is backed up before any changes are made, and can be restored easily if required.
 * No module-specific code in the main application. Node configuration may be provided for those modules that don't have a self-configuration mechanism, using separately installable 'plug-in' files.
 * Simple installation from a .zip file. No hidden directories or files.
-* All code and documentation will be made available on GitHub on an open MIT license.
+* All code and documentation will be made available on GitHub under an open MIT license.
 
 ### Target Systems
-The application is written in C# for Windows systems, based on .NET Desktop 7.
+The application is written in C# for Windows systems, based on .NET Desktop 8.
 
-## Progress
-Project started January 2023.
+## Installation
+TBA
 
-### As of November 2023...
+## Getting Started
+There are two ways of getting started with LayoutMesh:
+1. Importing data from the MERG FlimConfig utility (FCU).
+1. Connecting LayoutMesh to a CBUS network, and reading the data from each node.
 
-#### Features Complete or Near Completion (subject to testing)
-* All core features now coded.
+### Importing Data from a FlimConfig File
+This process imports nodes and events from a FlimConfig data file.  It can be done without being connected to the CBUS network, so is a safe way of exploring LayoutMesh without the danger of inadvertently making configuration changes.
+* Run LayoutMesh.
+* It is probably a bad idea to import data over any existing data, so select 'File' -> 'New' to clear all data and start afresh.
+* Select 'File' -> 'Import FCU Config File...'. Navigate to the FlimConfig data directory (usually %MyDocuments%\flimConfig\Configs), then double-click the required layout file (e.g. Layout1.xml).
+* There may be a display showing new devices and events that have been added to the MeshData data.
+* Select 'File' -> 'Save As...', and save the data as a MeshData layout file.
 
-#### In Progress
-* Code tidy-up, refactoring, review and commenting.
-
-#### Not Started
-* Module-specific node configuration plug-ins.
-* Testing. And more testing.
-* Documentation.
-
-#### Not Known
-* Interaction with SLiM nodes.
-* Interaction with DCC nodes.
-* There appears to be no documentation for the current FCU's functionality, so there are possibly things in there that I (and probably most people) know nothing about.
-
-### As of July 2023...
-
-#### Features Complete or Near Completion (subject to testing)
-* 'MeshData' files - XML file load and save; JavaScript parse and execute.
-* Main user interface - entity tree views; central entity information display panel; CBUS message display; drag & drop.
-* CBUS interface - COM port; message transmit and receive; formatting of CBUS data; logging.
-* Editing entity names, notes, and groups.
-* Editing event actions - assigning trigger and response actions; deleting actions.
-
-#### In Progress
-* Synchronisation between MeshData and hardware.
-* Adding context menus for entity add/edit/delete.
-
-#### Not Started
-* Module-specific node configuration plug-ins.
-* Firmware upload.
-* Testing. And more testing.
-* Documentation.
-
-#### Not Known
-* Interaction with SLiM nodes.
-* Interaction with DCC nodes.
-* There appears to be no documentation for the current FCU's functionality, so there are possibly things in there that I (and probably most people) know nothing about.
-
-### Screenshots (July 2023)
-
-User interface: entity treeviews on left and right of central information panel, and CBUS message panel.
-<p><img src="Screenshots/20230705-InitUI.gif" width="1059"/>
-<br><br>
-
-User interface with event "Event 16" selected: central panel showing data available about the event.
-<p><img src="Screenshots/20230705-UIExample.gif" width="1059"/>
-<br><br>
-
-Event 'Configure->Actions' shows the Event actions dialog: note level of detail about each action.
-<p><img src="Screenshots/20230705-Actions1.gif" width="732"/>
-<br><br>
-
-Actions 'Edit->Add Response' Add action dialog page 1: device "MIO Test channel 2" selected as a response action.
-<p><img src="Screenshots/20230705-AddAction1.gif" width="605"/>
-<br><br>
-
-Add action dialog page 2: specific action (flash output) selected.
-<p><img src="Screenshots/20230705-AddAction2.gif" width="605"/>
-<br><br>
-
-Event actions dialog: showing the newly added action.
-<p><img src="Screenshots/20230705-Actions2.gif" width="732"/>
-<br><br>
-
-Sync dialog: highlights differences between the application's data (MeshData), and the hardware.  Done by reading a node's parameters, node variables, events, and event variables.  Examples shown in the screenshot are: node 99, which responded on CBUS, but has no MeshData node; nodes 101 and 102 which exist in MeshData, but did not respond on CBUS; nodes 256 and 257 which exist in MeshData and responded. For these last two, a number of checks are performed: the hardware and MeshData module types match (if not, they are two different modules, and shouldn't have the same node number); the parameters match (if not, there is probably a firmware difference), everything else matches (if not, the configurations are out of step). Clicking on the response gives the user options available to 'fix' any mismatch. In the screenshot case, node 256 differs from its hardware in configuration data, and node 257 actually references a different module.
-<p><img src="Screenshots/20230705-Sync.gif" width="850"/>
-<br><br>
+### Reading data from CBUS Nodes
+This process reads configuration data directly from CBUS nodes.  It is a good way of "starting from scratch".  It is not possible to run LayoutMesh and FlimConfig at the same time unless you have two CBUS adapters (e.g. 2x CANUSBs) on your network.
+* Run LayoutMesh.
+* Click on the CBUS window.  If you can't see the CBUS window at any time, click on the 'Show CBUS Window' button on the main application window.
+* Select 'CBUS' -> 'COM Port', then select the appropriate COM port.  If the CBUS is active, a green indicator should appear in the bottom left-hand corner ot the CBUS window; adjacent amber indicators show messages being received and transmitted.
+* Select 'MeshData' -> 'Synchronise...', or click the 'Synchronise MeshData and Hardware' button.  A new window (the Sync window) will open, showing all the nodes on the CBUS network, with a 'Response' of 'New Node'.
+* For each node, Click 'Options'.  In the options dialog window select the first entry 'Add a new MeshData node with node number <nn>', then click 'OK'.
+* There may be a display showing new devices and events that have been added to the MeshData data.  The node's 'Response' should be showing as 'Synchronised', indicating that node parameters and configuration data in MeshData match that of the hardware.
+* Close the Sync window.
+* Select 'File' -> 'Save As...', and save the data as a MeshData layout file.
 
 ### Notes
-
-Looked at JSON as a format for MeshData files; found it difficult to manually read and edit.  Reverted to trusty old XML - tags let you know what you are looking at. By careful association of data model classes with the underlying XML, the application preserves user formatting, comments etc. when saving the XML file.
-
-Pleased with the performance of CBUS message capture, display, and logging. Appears to be limited by the speed of the CAN bus, not the application itself. Certainly a lot faster than the current FCU - for example: FCU takes 4.7 seconds to read 127 node variables from a CANMIO node; LayoutMesh reads the same node variables, and the events, and the event variables, and runs JavaScript to translate the event variables into actions ... all in 0.75 seconds.
+To avoid inadvertently making live configuration changes, you can select 'CBUS' -> 'Write Lock' in the CBUS window.  With the Write Lock activated, any LayoutMesh operation that writes configuration changes to a CBUS node is disabled.
