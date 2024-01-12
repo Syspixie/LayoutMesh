@@ -4,9 +4,14 @@ A CBUS module configuration utility for model railway layouts.
 <br>
 
 ## Update
-The initial version of LayoutMesh has been released: **LayoutMesh 1.0.0-alpha.1**.
+The initial versions of LayoutMesh have been released.
 
-Please note that this is a pre-release alpha (preview) version: the application has not yet undergone extensive testing in real-life environments; it may have limited functionality in some areas; features may be modified or removed before the final release.
+| Date | Version | Details |
+| --- | --- | --- |
+| 12/01/2024 | [1.0.0-alpha.2](https://github.com/Syspixie/LayoutMesh/releases/tag/v1.0.0-alpha.2) | Fixed issues with image and grid scaling on high DPI screens. |
+| 11/01/2024 | [1.0.0-alpha.1](https://github.com/Syspixie/LayoutMesh/releases/tag/v1.0.0-alpha.1) | Initial release. |
+
+Please note that these are pre-release alpha (preview) versions: the application has not yet undergone extensive testing in real-life environments; it may have limited functionality in some areas; features may be modified or removed before the final release.
 
 CANMIO and CANPAN CBUS modules are supported in terms of the data describing events and event actions, and also for module-specific node configuration screens.  Other module types are currently supported with a generic node variable and event variable editor.  Addition of module specific support should not require changes to the main application.
 
@@ -67,7 +72,7 @@ This process reads configuration data directly from CBUS nodes.  It is a good wa
 
 * Run LayoutMesh.
 * Click on the CBUS window.  If you can't see the CBUS window at any time, click on the 'Show CBUS Window' button on the main application window.
-* Select 'CBUS' -> 'COM Port', then select the appropriate COM port.  If the CBUS is active, a green indicator should appear in the bottom left-hand corner ot the CBUS window; adjacent amber indicators show messages being received and transmitted.
+* Select 'CBUS' -> 'COM Port', then select the appropriate COM port.  If the CBUS is active, a green indicator should appear in the bottom left-hand corner of the CBUS window; adjacent amber indicators show messages being received and transmitted.
 * Select 'MeshData' -> 'Synchronise...', or click the 'Synchronise MeshData and Hardware' button.  A new window (the Sync window) will open, showing all the nodes on the CBUS network, with a 'Response' of 'New Node'.
 * For each node, Click 'Options'.  In the options dialog window select the first entry 'Add a new MeshData node with node number <nn>', then click 'OK'.
 * There may be a display showing new devices and events that have been added to the MeshData data.  The node's 'Response' should be showing as 'Synchronised', indicating that node parameters and configuration data in MeshData match that of the hardware.
