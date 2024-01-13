@@ -13,7 +13,7 @@ The initial versions of LayoutMesh have been released.
 
 Please note that these are pre-release alpha (preview) versions: the application has not yet undergone extensive testing in real-life environments; it may have limited functionality in some areas; features may be modified or removed before the final release.
 
-CANMIO and CANPAN CBUS modules are supported in terms of the data describing events and event actions, and also for module-specific node configuration screens.  Other module types are currently supported with a generic node variable and event variable editor.  Addition of module specific support should not require changes to the main application.
+CBUS CANMIO and CANPAN modules are supported in terms of the data describing events and event actions, and also for module-specific node configuration screens.  Other module types are currently supported with a generic node variable and event variable editor.  Addition of module specific support should not require changes to the main application.
 
 ## Design
 
@@ -31,12 +31,12 @@ For module developers, LayoutMesh provides CBUS message display and logging, man
 * Capture and display of CBUS traffic in real time, including data translation.  The CBUS display is a separate window, allowing it to be positioned and accessed independent of the main application.
 * A 'synchronise' display handles hardware or data changes by comparing the hardware and data configuration of nodes, and, if they don't match, allowing the user to choose synchronisation options such as making the hardware match the data, or vice versa.
 * Data and hardware configuration information is backed up before any changes are made, and can be restored easily if required.
-* No module-specific code in the main application. Node configuration may be provided for those modules that don't have a self-configuration mechanism, using separately installable 'plug-in' files.
+* No module-specific code in the main application. Events and actions are defined by node-specific data files, which can include JavaScript code. Node configuration may be provided for those modules that don't have a self-configuration mechanism, using separate 'plug-in' C# assembly files.
 * Simple installation from a .zip file. No hidden directories or files.
-* All code and documentation will be made available on GitHub under an open MIT license.
+* All code and documentation will be made available on GitHub under the open MIT license.
 
 ### Target Systems
-The application is written in C# for Windows systems, based on .NET Desktop 8.0.
+The application is written in C# for Windows systems, based on .NET Desktop Runtime 8.0.
 
 ## Installation
 The application does not have its own installer.  The installation process is simply to download a zip file, and extract its contents to a suitable directory.  Shortcuts to the program may be created on the desktop, the taskbar, or anywhere else that makes sense.
@@ -47,18 +47,25 @@ By default, LayoutMesh looks for user files (layout data, settings etc.) in subd
 
 * Go to the release page on GitHub: https://github.com/Syspixie/LayoutMesh/releases.
 * Click on the release required, e.g. 'v1.0.0'.
-* Click on the specific zip file, e.g. 'LayoutMesh-1.0.0-win-x64.zip', to download it (to, for example, your 'Downloads' folder).
-* Navigate to the download directory, and double-click the zip file.
-* Extract the contents to your chosen directory.
-* Navigate to your chosen directory; there should be a LayoutMesh.exe file, plus 'Addins' and 'Config' subdirectories and their files.
-* Double-click the LayoutMesh.exe file to run the application.  Install .NET if prompted (a one-off operation).
+* Click on the specific zip file, e.g. 'LayoutMesh-1.0.0-win-x64.zip', to download it.
+* Navigate to your download directory, and double-click the zip file.
+* Extract the contents to your chosen install directory.
+* Navigate to the install directory; there should be a 'LayoutMesh.exe' file, plus 'Addins' and 'Config' subdirectories and their files.
+* Double-click the 'LayoutMesh.exe' file to run the application.
+
+#### Opening a Specific Layout File
+LayoutMesh will, by default, open the layout file in use when it was last closed.  If a layout file is specified when executing LayoutMesh, that particular file will be opened. For example, to open a layout file named 'Knapford.MeshData', use one of the following:
+* Open a windows command prompt; navigate to the LayoutMesh install directory; execute the command:
+<br>`> LayoutMesh.exe Knapford.MeshData`
+* Add parameter 'Knapford.MeshData' to the command in a shortcut definition (creates a layout-specific shortcut).
+* Drag a layout file onto the 'LayoutMesh.exe' program, or onto a shortcut to the program.
 
 ## Getting Started
 There are two ways of getting started with LayoutMesh:
 1. Importing data from the MERG FlimConfig utility (FCU).
 1. Connecting LayoutMesh to a CBUS network, and reading the data from each node.
 
-### Importing Data from a FlimConfig File
+#### Importing Data from a FlimConfig File
 This process imports nodes and events from a FlimConfig data file.  It can be done without being connected to the CBUS network, so is a safe way of exploring LayoutMesh without the danger of inadvertently making configuration changes.
 
 * Run LayoutMesh.
@@ -67,7 +74,7 @@ This process imports nodes and events from a FlimConfig data file.  It can be do
 * There may be a display showing new devices and events that have been added to the MeshData data.
 * Select 'File' -> 'Save As...', and save the data as a MeshData layout file.
 
-### Reading data from CBUS Nodes
+#### Reading Data from CBUS Nodes
 This process reads configuration data directly from CBUS nodes.  It is a good way of "starting from scratch".  It is not possible to run LayoutMesh and FlimConfig at the same time unless you have two CBUS adapters (e.g. 2x CANUSBs) on your network.
 
 * Run LayoutMesh.
@@ -79,5 +86,4 @@ This process reads configuration data directly from CBUS nodes.  It is a good wa
 * Close the Sync window.
 * Select 'File' -> 'Save As...', and save the data as a MeshData layout file.
 
-### Notes
 To avoid inadvertently making live configuration changes, you can select 'CBUS' -> 'Write Lock' in the CBUS window.  With the Write Lock activated, any LayoutMesh operation that writes configuration changes to a CBUS node is disabled.
