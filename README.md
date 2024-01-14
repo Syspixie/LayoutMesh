@@ -1,5 +1,5 @@
 # LayoutMesh
-A CBUS module configuration utility for model railway layouts.
+A Windows Desktop based CBUS module configuration utility for model railway layouts.
 <p><img src="Screenshots/20240110-InitUI.gif" width="1174"/>
 <br>
 
@@ -20,7 +20,7 @@ CBUS CANMIO and CANPAN modules are supported in terms of the data describing eve
 ### Concept
 **A consistent and coherent CBUS layout configuration utility that can be used with the minimum of background knowledge by layout builders, whilst also being a powerful tool for module development.**
 
-LayoutMesh is an application which represents a model railway layout as a series of devices (e.g. a switch, a point motor, a signal) and a series of events (e.g. 'Select route A', 'Loco detected in block').  The user creates an event, giving it a name and adding free-text notes if required.  The event is then configured to communicate between devices by defining trigger and response actions; for example: a switch is assigned to trigger the event, and two point motors are assigned to respond to the event.
+LayoutMesh is a Windows application which represents a model railway layout as a series of devices (e.g. a switch, a point motor, a signal) and a series of events (e.g. 'Select route A', 'Loco detected in block').  The user creates an event, giving it a name and adding free-text notes if required.  The event is then configured to communicate between devices by defining trigger and response actions; for example: a switch is assigned to trigger the event, and two point motors are assigned to respond to the event.
 
 For module developers, LayoutMesh provides CBUS message display and logging, manual triggering of events, and firmware uploading. Data files, which contain all device, node, module, processor, and event information, are human-readable. Data loading is edit-tolerant, with the ability to handle missing and duplicated data in a predictable manner.
 
