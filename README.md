@@ -8,10 +8,13 @@ The initial versions of LayoutMesh have been released.
 
 | Date | Version | Details |
 | --- | --- | --- |
+| 29/01/2024 | [1.0.0-alpha.3](https://github.com/Syspixie/LayoutMesh/releases/tag/v1.0.0-alpha.3) | Added Network CBUS connections.<br>Added measures to prevent cross-thread exceptions. |
 | 12/01/2024 | [1.0.0-alpha.2](https://github.com/Syspixie/LayoutMesh/releases/tag/v1.0.0-alpha.2) | Fixed issues with image and grid scaling on high DPI screens. |
 | 11/01/2024 | [1.0.0-alpha.1](https://github.com/Syspixie/LayoutMesh/releases/tag/v1.0.0-alpha.1) | Initial release. |
 
 Please note that these are pre-release alpha (preview) versions: the application has not yet undergone extensive testing in real-life environments; it may have limited functionality in some areas; features may be modified or removed before the final release.
+
+If LayoutMesh freezes when switching from one layout file to another, it may be that you have .NET version 8.0.0 installed. Please update to [.NET Desktop Runtime 8.0.1](https://dotnet.microsoft.com/en-us/download/dotnet/8.0). From alpha.3, the .NET version is displayed in the Help->About box and in Details on the error message box.
 
 CBUS CANMIO and CANPAN modules are supported in terms of the data describing events and event actions, and also for module-specific node configuration screens.  Other module types are currently supported with a generic node variable and event variable editor.  Addition of module specific support should not require changes to the main application.
 
