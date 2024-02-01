@@ -4,10 +4,10 @@ A Windows Desktop based CBUS module configuration utility for model railway layo
 <br>
 
 ## Update
-The initial versions of LayoutMesh have been released.
 
 | Date | Version | Details |
 | --- | --- | --- |
+| 01/02/2024 | [1.0.0-alpha.4](https://github.com/Syspixie/LayoutMesh/releases/tag/v1.0.0-alpha.4) | Improved exception handling. |
 | 29/01/2024 | [1.0.0-alpha.3](https://github.com/Syspixie/LayoutMesh/releases/tag/v1.0.0-alpha.3) | Added Network CBUS connections.<br>Added measures to prevent cross-thread exceptions. |
 | 12/01/2024 | [1.0.0-alpha.2](https://github.com/Syspixie/LayoutMesh/releases/tag/v1.0.0-alpha.2) | Fixed issues with image and grid scaling on high DPI screens. |
 | 11/01/2024 | [1.0.0-alpha.1](https://github.com/Syspixie/LayoutMesh/releases/tag/v1.0.0-alpha.1) | Initial release. |
